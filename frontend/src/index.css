@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GeoAI Premium Design System - Earth-toned, Professional */
+
+@layer base {
+  :root {
+    /* Core Background & Foreground */
+    --background: 40 25% 96%;
+    --foreground: 220 30% 15%;
+
+    /* Cards & Popovers */
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 15%;
+
+    /* Primary: Forest Green */
+    --primary: 152 45% 28%;
+    --primary-foreground: 40 25% 98%;
+
+    /* Secondary: Earth Brown */
+    --secondary: 28 35% 35%;
+    --secondary-foreground: 40 25% 98%;
+
+    /* Deep Blue Accent */
+    --accent: 215 55% 25%;
+    --accent-foreground: 40 25% 98%;
+
+    /* Muted tones */
+    --muted: 40 20% 90%;
+    --muted-foreground: 220 15% 45%;
+
+    /* Destructive */
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 40 20% 85%;
+    --input: 40 20% 88%;
+    --ring: 152 45% 28%;
+
+    --radius: 0.625rem;
+
+    /* LULC Class Colors */
+    --lulc-forest: 142 50% 35%;
+    --lulc-water: 205 70% 45%;
+    --lulc-agriculture: 95 55% 45%;
+    --lulc-barren: 35 40% 55%;
+    --lulc-builtup: 0 0% 45%;
+
+    /* Confidence Colors */
+    --confidence-high: 152 55% 40%;
+    --confidence-medium: 45 75% 55%;
+    --confidence-low: 15 70% 50%;
+
+    /* Hero & Special */
+    --hero-overlay: 220 40% 10%;
+    --glass: 0 0% 100%;
+    --glass-border: 0 0% 100%;
+
+    /* Sidebar */
+    --sidebar-background: 40 25% 98%;
+    --sidebar-foreground: 220 30% 15%;
+    --sidebar-primary: 152 45% 28%;
+    --sidebar-primary-foreground: 40 25% 98%;
+    --sidebar-accent: 40 20% 92%;
+    --sidebar-accent-foreground: 220 30% 15%;
+    --sidebar-border: 40 20% 88%;
+    --sidebar-ring: 152 45% 28%;
+  }
+
+  .dark {
+    --background: 220 30% 8%;
+    --foreground: 40 20% 95%;
+
+    --card: 220 30% 12%;
+    --card-foreground: 40 20% 95%;
+    --popover: 220 30% 12%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 152 45% 40%;
+    --primary-foreground: 220 30% 8%;
+
+    --secondary: 28 30% 45%;
+    --secondary-foreground: 40 20% 95%;
+
+    --accent: 215 50% 45%;
+    --accent-foreground: 40 20% 95%;
+
+    --muted: 220 25% 18%;
+    --muted-foreground: 40 15% 65%;
+
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 40 20% 95%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 22%;
+    --ring: 152 45% 40%;
+
+    --sidebar-background: 220 30% 10%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 152 45% 40%;
+    --sidebar-primary-foreground: 220 30% 8%;
+    --sidebar-accent: 220 25% 15%;
+    --sidebar-accent-foreground: 40 20% 95%;
+    --sidebar-border: 220 25% 18%;
+    --sidebar-ring: 152 45% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01", "ss03";
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glass Card Effect */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-lg;
+  }
+
+  /* Hero Section Styles */
+  .hero-gradient {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--hero-overlay) / 0.7) 0%,
+      hsl(var(--hero-overlay) / 0.85) 50%,
+      hsl(var(--hero-overlay) / 0.95) 100%
+    );
+  }
+
+  /* Section Container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Premium Card Hover */
+  .card-hover {
+    @apply transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* Map Container */
+  .map-container {
+    @apply relative rounded-lg overflow-hidden border border-border bg-muted;
+  }
+
+  /* Stat Card */
+  .stat-card {
+    @apply glass-card rounded-xl p-6 card-hover;
+  }
+
+  /* Legend Item */
+  .legend-item {
+    @apply flex items-center gap-2 text-sm;
+  }
+
+  /* Story Section */
+  .story-section {
+    @apply py-16 md:py-24;
+  }
+
+  /* Input Premium Style */
+  .input-premium {
+    @apply bg-card border-2 border-border rounded-lg px-4 py-3 text-lg font-medium
+           transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/20
+           placeholder:text-muted-foreground/50;
+  }
+
+  /* Button Variants */
+  .btn-hero {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-lg text-lg font-semibold
+           shadow-lg shadow-primary/25 transition-all duration-300
+           hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5
+           active:translate-y-0;
+  }
+
+  .btn-secondary-hero {
+    @apply bg-transparent border-2 border-white/30 text-white px-8 py-4 rounded-lg text-lg font-medium
+           backdrop-blur-sm transition-all duration-300
+           hover:bg-white/10 hover:border-white/50;
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    @apply animate-bounce;
+  }
+
+  /* Chart Container */
+  .chart-container {
+    @apply bg-card rounded-xl p-6 border border-border shadow-sm;
+  }
+
+  /* Confidence Badge */
+  .confidence-high {
+    @apply bg-[hsl(var(--confidence-high))] text-white;
+  }
+  .confidence-medium {
+    @apply bg-[hsl(var(--confidence-medium))] text-white;
+  }
+  .confidence-low {
+    @apply bg-[hsl(var(--confidence-low))] text-white;
+  }
+}
+
+@layer utilities {
+  /* Fade In Animation */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-delay-1 {
+    animation: fadeIn 0.6s ease-out 0.1s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 0.6s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-delay-3 {
+    animation: fadeIn 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  /* Slide In */
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  /* Scale In */
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  /* Parallax Effect */
+  .parallax-slow {
+    transform: translateY(calc(var(--scroll) * 0.3px));
+  }
+
+  /* Text Gradient */
+  .text-gradient-earth {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--secondary))] to-[hsl(var(--accent))];
+  }
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}

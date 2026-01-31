@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+numpy
+pandas
+rasterio
+geopandas
+shapely
+pyproj
+fiona
+scikit-learn
+matplotlib
+seaborn
+streamlit
+tqdm
+Pillow
+python-multipart
